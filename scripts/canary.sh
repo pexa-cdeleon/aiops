@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 set -e
 
-log() {printf "INFO: ${1}\n";}
-loge() {printf "ERROR: ${1}\n";}
+log() { printf "INFO: ${1}\n"; }
+loge() { printf "ERROR: ${1}\n"; }
 
 #------------------------------------------------------------------
 log "Create Python virtual environment"
