@@ -1,2 +1,2 @@
-str = "Python triggered"
+str = 'Python triggered'
 print(str)
