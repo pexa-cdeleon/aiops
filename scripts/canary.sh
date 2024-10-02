@@ -2,4 +2,4 @@
 
 echo 'Hello PEXA'
 
-`python3 pvt.py`
+`python3 aiops/scripts/pvt.py`
