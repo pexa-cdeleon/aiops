@@ -1,1 +1,2 @@
-print("Python triggered")
+str = "Python triggered"
+print(str)
