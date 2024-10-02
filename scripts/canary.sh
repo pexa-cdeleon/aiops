@@ -1,3 +1,3 @@
 echo 'Hello PEXA'
 
-`python3 --versin`
+`python3 pvt.py`
