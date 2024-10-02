@@ -1,3 +1,3 @@
 echo 'Hello PEXA'
 
-aws lambda
+`python3 --versin`
