@@ -1,3 +1,3 @@
 echo 'Hello PEXA'
 
-python pvt.py
+python3 pvt.py
