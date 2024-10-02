@@ -1,3 +1,3 @@
 echo 'Hello PEXA'
 
-`python3 --version`
+aws lambda
