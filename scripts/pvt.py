@@ -1,2 +1,1 @@
-str = 'Python Alive'
-print(str)
+print('Python Alive')
