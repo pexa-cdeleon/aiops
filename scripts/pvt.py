@@ -16,7 +16,7 @@ driver = webdriver.Chrome(service=service,options=options)
 driver.get("https://workspaces.pexa.com.au/pexa_web/login.html")
 
 WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.ID, 'username')))
-driver.find_element_by_id('username')
+driver.find_element(By.ID, 'username')
 
 print(driver.title)
 
