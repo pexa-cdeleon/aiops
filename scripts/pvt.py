@@ -1,56 +1,41 @@
-#import asyncio
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.support.ui import Select
 from selenium.webdriver.common.by import By
-from aws_synthetics.selenium import synthetics_webdriver as syn_webdriver
-from aws_synthetics.common import synthetics_logger as logger, synthetics_configuration
+from selenium.common.exceptions import TimeoutException
+from selenium.common.exceptions import NoSuchElementException
+import selenium.common.exceptions
+import boto3
+import base64
+import json
+from botocore.exceptions import ClientError
+from aws_synthetics.selenium import synthetics_webdriver as webdriver
+from aws_synthetics.common import synthetics_logger as logger
+from aws_synthetics.common import synthetics_configuration
 
-TIMEOUT = 10
+TIMEOUT = 5
+url = "https://workspaces.pexa.com.au/pexa_web/login.html"
 
 async def main():
-    url = "https://www.pexa.com.au/"
-    browser = syn_webdriver.Chrome()
+    browser = webdriver.Chrome()
 
+    synthetics_configuration.set_config(
+        {
+            "screenshot_on_step_start": False,
+            "screenshot_on_step_success": True,
+            "screenshot_on_step_failure": True
+        }
+    )
 
-    # Set synthetics configuration
-    synthetics_configuration.set_config({
-       "screenshot_on_step_start" : True,
-       "screenshot_on_step_success": True,
-       "screenshot_on_step_failure": True
-    });
-
-
-    def navigate_to_page():
+    logger.info("------------------Production Verification Tests Started------------------")
+    
+    def navigate_to_home():
         browser.implicitly_wait(TIMEOUT)
         browser.get(url)
-
-    await syn_webdriver.execute_step("navigateToUrl", navigate_to_page)
-
-    # Execute customer steps
-    def customer_actions_1():
-        browser.find_element(By.XPATH, "//*[@id='__next']/div/div[1]/div[1]/div[1]/div/div/div/div/div/div[2]/div[4]/a").click()
-
-    await syn_webdriver.execute_step('click', customer_actions_1)
-
-    def customer_actions_2():
-        browser.find_element(By.XPATH, "//*[@id='__next']/div/div[1]/div[1]/div[1]/div/div/div/div/div/div[2]/div[4]/div/div/div/div/div/div/div[2]/ul/li[8]/a")
-
-    await syn_webdriver.execute_step('verifySelector', customer_actions_2)
-
-    def customer_actions_3():
-        browser.find_element(By.XPATH, "//*[@id='__next']/div/div[1]/div[1]/div[1]/div/div/div/div/div/div[2]/div[4]/div/div/div/div/div/div/div[2]/ul/li[8]/a").click()
-
-    await syn_webdriver.execute_step('click', customer_actions_3)
-
-    def customer_actions_4():
-        browser.find_element(By.XPATH, "//*[@id='__next']/div/div[2]/div[2]/div/div/div/div/div/div[2]/form/div[8]/div/div/div/button")
-
-    await syn_webdriver.execute_step('verifySelector', customer_actions_4)
+    await webdriver.execute_step("Navigate to PEXA Exchange", navigate_to_home)
 
 
-
-    logger.info("Canary successfully executed.")
-
-
+    logger.info("------------------Production Verification Tests Completed------------------")
+    
 async def handler(event, context):
-    # user defined log statements using synthetics_logger
-    logger.info("Selenium Python workflow canary.")
     return await main()
