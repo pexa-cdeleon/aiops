@@ -15,5 +15,5 @@ element = driver.find_element(By.NAME, "query")
 assert element.is_enabled()
 driver.quit()
 
-print(assert element.is_enabled())
+print("Done")
 
