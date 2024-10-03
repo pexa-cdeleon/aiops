@@ -18,7 +18,7 @@ driver.get("https://workspaces.pexa.com.au/pexa_web/login.html")
 WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.ID, 'username')))
 print('Assert')
 element = driver.find_element(By.ID, 'username')
-assert element.is_enabled()
+assert element.is_displayed()
 
 print(driver.title)
 
