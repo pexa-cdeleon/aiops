@@ -5,4 +5,4 @@ set -e
 echo "Create Python virtual environment"
 pip install virtualenv
 
-`python3 aiops/scripts/pvt.py`
+`python3 pvt.py`
