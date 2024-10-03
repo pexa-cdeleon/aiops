@@ -15,6 +15,8 @@ options.add_argument("--headless=new")
 driver = webdriver.Chrome(service=service,options=options)
 driver.get("https://workspaces.pexa.com.au/pexa_web/login.html")
 
+WebDriverWait(webdriver, 10).until(EC.presence_of_element_located((By.ID, 'username')))
+
 print(driver.title)
 
 driver.quit()
