@@ -1,9 +1,19 @@
 #!/usr/bin/env python3
 
 from selenium import webdriver
+from selenium.webdriver.common.by import By
+from selenium.webdriver.chrome.service import Service
 
-browser = webdriver.Chrome()
-browser.get('http://www.yahoo.com')
-assert 'Yahoo' in browser.title
+service = Service(r"/usr/bin/chromedriver")
+options = webdriver.ChromeOptions()
+options.add_argument("--no-sandbox")
+options.add_argument("--headless=new")
 
-print("Hello Python")
+driver = webdriver.Chrome(service=service,options=options)
+driver.get("https://www.browserstack.com/")
+element = driver.find_element(By.NAME, "query")
+assert element.is_enabled()
+driver.quit()
+
+print(assert element.is_enabled())
+
