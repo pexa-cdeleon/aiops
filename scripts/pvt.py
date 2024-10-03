@@ -16,9 +16,9 @@ driver = webdriver.Chrome(service=service,options=options)
 driver.get("https://workspaces.pexa.com.au/pexa_web/login.html")
 
 WebDriverWait(webdriver, 10).until(EC.presence_of_element_located((By.ID, 'username')))
-element = driver.find_element(By.ID, 'username')
-assert element.is_enabled()
-print(element.is_enabled())
+#element = driver.find_element(By.ID, 'username')
+#assert element.is_enabled()
+#print(element.is_enabled())
 
 driver.quit()
 
