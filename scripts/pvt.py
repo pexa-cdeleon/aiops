@@ -13,13 +13,9 @@ options.add_argument("--no-sandbox")
 options.add_argument("--headless=new")
 
 driver = webdriver.Chrome(service=service,options=options)
-driver.get("https://workspaces.pexa.com.au/pexa_web/login.html")
+driver.get("https:/www.pexa.com.au")
 
-WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.ID, 'username')))
-print('Assert')
-element = driver.find_element(By.ID, 'username')
-assert element.is_enabled()
-
+WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.XPATH, '//*[@id="__next"]/div/div[1]/div[1]/div[1]/div/div/div/div/div/div[2]/div[4]/a'))).click()
 print(driver.title)
 
 driver.quit()
