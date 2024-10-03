@@ -20,7 +20,7 @@ print('Assert')
 element = driver.find_element(By.ID, 'username')
 assert element.is_displayed()
 
-print(driver.title)
+print(element.is_displayed())
 
 driver.quit()
 print('Done')
