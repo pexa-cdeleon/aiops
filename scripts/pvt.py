@@ -10,10 +10,11 @@ options.add_argument("--no-sandbox")
 options.add_argument("--headless=new")
 
 driver = webdriver.Chrome(service=service,options=options)
-driver.get("https://www.browserstack.com/")
-element = driver.find_element(By.NAME, "query")
+driver.get("https://workspaces.pexa.com.au/pexa_web/login.html")
+element = driver.find_element(By.ID, "sign-in-link")
 assert element.is_enabled()
+print(element.is_enabled())
+
 driver.quit()
 
-print("Done")
-
+print(driver.title)
