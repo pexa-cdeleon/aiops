@@ -16,6 +16,8 @@ driver = webdriver.Chrome(service=service,options=options)
 driver.get("https:/www.pexa.com.au")
 
 WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.XPATH, '//*[@id="__next"]/div/div[1]/div[1]/div[1]/div/div/div/div/div/div[2]/div[4]/a'))).click()
+WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.XPATH, '//*[@id="__next"]/div/div[1]/div[1]/div[1]/div/div/div/div/div/div[2]/div[4]/div/div/div/div/div/div/div[2]/ul/li[8]/a'))).click()
+
 print(driver.title)
 
 driver.quit()
